@@ -5,8 +5,6 @@ const inYear = document.querySelector("#inYear");
 const vehicle = document.querySelector(".vehicle");
 const selected = document.querySelector("[selected]");
 
-console.log(selected);
-
 // function para retulizar nos inputs
 function createOption(value, text) {
   const option = document.createElement("option");
@@ -36,6 +34,7 @@ async function fetchType() {
   vehicle.innerHTML = "";
 
   selected.setAttribute("value", "");
+  inMarca.disabled = false;
 
   if (marcaJSON) {
     marcaJSON.forEach((marca) => {
@@ -52,7 +51,9 @@ async function fetchModel() {
   const modelJSON = await fetchJSON(urlModel);
 
   inModel.innerHTML = `<option value="" selected disabled>Selecione</option>`;
+  inYear.innerHTML = `<option value="" selected disabled>Selecione</option>`;
   vehicle.innerHTML = "";
+  inModel.disabled = false;
 
   if (inModel && modelJSON.modelos) {
     modelJSON.modelos.forEach((model) => {
@@ -70,6 +71,7 @@ async function fetchYear() {
 
   inYear.innerHTML = `<option value="" selected disabled>Selecione</option>`;
   vehicle.innerHTML = "";
+  inYear.disabled = false;
 
   if (inModel && yearJSON) {
     yearJSON.forEach((year) => {
@@ -86,11 +88,11 @@ async function fetchDetails() {
   vehicle.innerHTML = "";
 
   if (detailJSON) {
-    vehicle.innerHTML = ` <p>Modelo: ${detailJSON.Modelo}</p>
-                          <p>Marca: ${detailJSON.Marca}</p>
-                          <p>Ano: ${detailJSON.AnoModelo}</p>
-                          <p>Combustível: ${detailJSON.Combustivel}</p>
-                          <p>Valor: ${detailJSON.Valor}</p>
+    vehicle.innerHTML = ` <h2>${detailJSON.Modelo} - ${detailJSON.AnoModelo}</h2>
+                          <p><span>Marca:</span> ${detailJSON.Marca}</p>
+                          <p><span>Combustível:</span> ${detailJSON.Combustivel}</p>
+                          <p><span>Valor:</span> ${detailJSON.Valor}</p>
+                          <p><span>Referência:</span> ${detailJSON.MesReferencia}</p>
                           `;
   }
 }
