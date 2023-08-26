@@ -1,7 +1,5 @@
 # tabela-fipe
 
-# tabela-fipe
-
 <a href="https://yurisouzadev.github.io/tabela-fipe/">Live</a> - Já com a responsividade para mobile.
 
 <h1>Sem opçoes selecionada</h1>
