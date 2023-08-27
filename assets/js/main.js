@@ -35,6 +35,8 @@ async function fetchType() {
 
   selected.setAttribute("value", "");
   inMarca.disabled = false;
+  inModel.disabled = true;
+  inYear.disabled = true;
 
   if (marcaJSON) {
     marcaJSON.forEach((marca) => {
@@ -54,6 +56,7 @@ async function fetchModel() {
   inYear.innerHTML = `<option value="" selected disabled>Selecione</option>`;
   vehicle.innerHTML = "";
   inModel.disabled = false;
+  inYear.disabled = true;
 
   if (inModel && modelJSON.modelos) {
     modelJSON.modelos.forEach((model) => {
